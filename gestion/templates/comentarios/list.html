@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Comentarios</h2>
+    <a href="{% url 'comentario-create' %}" class="btn btn-primary mb-3">Crear Comentario</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Auto</th>
+                <th>Autor</th>
+                <th>Comentario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comentario in comentarios %}
+                <tr>
+                    <td>{{ comentario.auto.modelo.nombre }}</td>
+                    <td>{{ comentario.autor.username }}</td> 
+                    <td>{{ comentario.comentario }}</td>
+                    <td>
+                        <a href="{% url 'comentario-detail' comentario.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'comentario-update' comentario.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'comentario-delete' comentario.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

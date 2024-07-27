@@ -1,0 +1,34 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Actualizar Cita</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Cliente</label>
+            <select name="cliente_id" class="form-control" required>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}" {% if cliente.id == cita.cliente.id %}selected{% endif %}>{{ cliente.user.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Servicio</label>
+            <select name="servicio_id" class="form-control" required>
+                {% for servicio in servicios %}
+                    <option value="{{ servicio.id }}" {% if servicio.id == cita.servicio.id %}selected{% endif %}>{{ servicio.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Fecha</label>
+            <input type="date" name="fecha" class="form-control" value="{{ cita.fecha }}" required>
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <textarea name="descripcion" class="form-control" required>{{ cita.descripcion }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+{% endblock %}

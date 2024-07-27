@@ -1,0 +1,20 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles de la Cita</h2>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ cita.servicio.nombre }}</h3>
+            <p class="card-text">Cliente: {{ cita.cliente.user.username }}</p>
+            <p class="card-text">Fecha: {{ cita.fecha }}</p>
+            <p class="card-text">Descripción: {{ cita.descripcion }}</p>
+        </div>
+    </div>
+    <a href="{% url 'cita-update' cita.id %}" class="btn btn-success mt-3">Editar</a>
+    <form action="{% url 'cita-delete' cita.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+    </form>
+    <a href="{% url 'cita-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Citas</a>
+</div>
+{% endblock %}

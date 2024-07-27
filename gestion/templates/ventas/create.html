@@ -1,0 +1,30 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Crear Venta</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Auto</label>
+            <select name="auto_id" class="form-control" required>
+                {% for auto in autos %}
+                    <option value="{{ auto.id }}">{{ auto.modelo.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Cliente</label>
+            <select name="cliente_id" class="form-control" required>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.user.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Precio Final</label>
+            <input type="number" name="precio_final" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

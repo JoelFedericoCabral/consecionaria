@@ -1,0 +1,20 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles del Servicio</h2>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ servicio.nombre }}</h3>
+            <p class="card-text">Descripción: {{ servicio.descripcion }}</p>
+            <p class="card-text">Precio: {{ servicio.precio }}</p>
+        </div>
+    </div>
+    <a href="{% url 'servicio-update' servicio.id %}" class="btn btn-success mt-3">Editar</a>
+    <form action="{% url 'servicio-delete' servicio.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+    </form>
+    <a href="{% url 'servicio-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Servicios</a>
+</div>
+{% endblock %}
+

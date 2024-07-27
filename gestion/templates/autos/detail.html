@@ -1,0 +1,25 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles del Auto</h2>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ auto.modelo.marca }} {{ auto.modelo.nombre }}</h3>
+            <p class="card-text">Categoría: {{ auto.categoria.nombre }}</p>
+            <p class="card-text">Precio: {{ auto.precio }}</p>
+            <p class="card-text">Descripción: {{ auto.descripcion }}</p>
+            {% if auto.imagen %}
+                <img src="{{ auto.imagen.url }}" class="img-fluid" alt="Foto del auto">
+            {% else %}
+                <p>No hay foto disponible</p>
+            {% endif %}
+        </div>
+    </div>
+    <a href="{% url 'auto-update' auto.id %}" class="btn btn-success mt-3">Editar</a>
+    <form action="{% url 'auto-delete' auto.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+    </form>
+    <a href="{% url 'auto-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Autos</a>
+</div>
+{% endblock %}

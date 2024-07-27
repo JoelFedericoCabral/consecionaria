@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Autos</h2>
+    <a href="{% url 'auto-create' %}" class="btn btn-primary mb-3">Crear Auto</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for auto in autos %}
+                <tr>
+                    <td>{{ auto.modelo.marca.nombre }}</td>
+                    <td>{{ auto.modelo.nombre }}</td>
+                    <td>{{ auto.precio }}</td>
+                    <td>
+                        <a href="{% url 'auto-detail' auto.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'auto-update' auto.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'auto-delete' auto.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

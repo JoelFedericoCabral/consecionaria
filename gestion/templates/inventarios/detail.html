@@ -1,0 +1,19 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles del Inventario</h2>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ inventario.auto.modelo.nombre }}</h3>
+            <p class="card-text">Cantidad: {{ inventario.cantidad }}</p>
+            <p class="card-text">Fecha actualizacion: {{ inventario.fecha_actualizacion }}</p>
+        </div>
+    </div>
+    <a href="{% url 'inventario-update' inventario.id %}" class="btn btn-success mt-3">Editar</a>
+    <form action="{% url 'inventario-delete' inventario.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+    </form>
+    <a href="{% url 'inventario-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Inventarios</a>
+</div>
+{% endblock %}

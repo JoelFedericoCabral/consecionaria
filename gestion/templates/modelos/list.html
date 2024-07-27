@@ -1,0 +1,33 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Modelos de Autos</h2>
+    <a href="{% url 'modelo-create' %}" class="btn btn-primary mb-3">Crear Modelo</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for modelo in modelos %}
+                <tr>
+                    <td>{{ modelo.nombre }}</td>
+                    <td>{{ modelo.marca.nombre }}</td>
+                    <td>
+                        <a href="{% url 'modelo-detail' modelo.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'modelo-update' modelo.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'modelo-delete' modelo.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

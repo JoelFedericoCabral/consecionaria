@@ -1,0 +1,33 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Empleados</h2>
+    <a href="{% url 'empleado-create' %}" class="btn btn-primary mb-3">Crear Empleado</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Puesto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.user.username }}</td>
+                    <td>{{ empleado.puesto }}</td>
+                    <td>
+                        <a href="{% url 'empleado-detail' empleado.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'empleado-update' empleado.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'empleado-delete' empleado.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

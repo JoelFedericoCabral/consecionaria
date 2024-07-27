@@ -1,0 +1,34 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Crear Auto</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_marca">Marca:</label>
+            {{ form.marca }}
+        </div>
+        <div class="form-group">
+            <label for="id_modelo">Modelo:</label>
+            {{ form.modelo }}
+        </div>
+        <div class="form-group">
+            <label for="id_categoria">Categoría:</label>
+            {{ form.categoria }}
+        </div>
+        <div class="form-group">
+            <label for="id_precio">Precio:</label>
+            {{ form.precio }}
+        </div>
+        <div class="form-group">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
+        <div class="form-group">
+            <label for="id_imagen">Imagen:</label>
+            {{ form.imagen }}
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

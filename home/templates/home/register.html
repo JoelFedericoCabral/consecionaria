@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <h1>Registrate</h1>
+            {{ register_form|crispy }}
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>Iniciar sesion</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>o utiliza tu cuenta</span>
+            <input type="text" name="username" placeholder="Usuario" required />
+            <input type="password" name="password" placeholder="Contraseña" required />
+            <a href="#">Olvidaste tu contraseña?</a>
+            <button type="submit">Iniciar sesion</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Bienvenido!</h1>
+                <p>Si ya estas registrado, inicie sesion con su informacion personal.</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hola!</h1>
+                <p>Introduce tus datos personales y comienza tu viaje con nosotros</p>
+                <button class="ghost" id="signUp">Registrarme</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

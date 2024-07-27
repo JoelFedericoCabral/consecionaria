@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Actualizar Servicio</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ servicio.nombre }}" required>
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <textarea name="descripcion" class="form-control" required>{{ servicio.descripcion }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="number" name="precio" class="form-control" value="{{ servicio.precio }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+{% endblock %}

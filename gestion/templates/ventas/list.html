@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Ventas</h2>
+    <a href="{% url 'venta-create' %}" class="btn btn-primary mb-3">Crear Venta</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Auto</th>
+                <th>Cliente</th>
+                <th>Precio Final</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+                <tr>
+                    <td>{{ venta.auto.modelo.nombre }}</td>
+                    <td>{{ venta.cliente.user.username }}</td>
+                    <td>{{ venta.precio_final }}</td>
+                    <td>
+                        <a href="{% url 'venta-detail' venta.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'venta-update' venta.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'venta-delete' venta.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

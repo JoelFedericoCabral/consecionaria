@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Citas</h2>
+    <a href="{% url 'cita-create' %}" class="btn btn-primary mb-3">Crear Cita</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+                <tr>
+                    <td>{{ cita.cliente.user.username }}</td>
+                    <td>{{ cita.servicio.nombre }}</td>
+                    <td>{{ cita.fecha }}</td>
+                    <td>
+                        <a href="{% url 'cita-detail' cita.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        <a href="{% url 'cita-update' cita.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <form action="{% url 'cita-delete' cita.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

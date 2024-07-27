@@ -1,0 +1,18 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles del Empleado</h2>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ empleado.user.username }}</h3>
+            <p class="card-text">Puesto: {{ empleado.puesto }}</p>
+        </div>
+    </div>
+    <a href="{% url 'empleado-update' empleado.id %}" class="btn btn-success mt-3">Editar</a>
+    <form action="{% url 'empleado-delete' empleado.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+    </form>
+    <a href="{% url 'empleado-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Empleados</a>
+</div>
+{% endblock %}
