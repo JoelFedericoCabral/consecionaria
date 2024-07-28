@@ -33,12 +33,16 @@ class ComentarioDetailView(View):
             )
         )
 
-
-@method_decorator(staff_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ComentarioDeleteView(View):
     def post(self, request, id, *args, **kwargs):
-        repo = ComentarioRepository()
         comentario = get_object_or_404(Comentario, id=id)
+
+        if not request.user.is_staff and request.user != comentario.autor:
+            messages.error(request, '<span style="color: red;">No tienes permiso para eliminar este comentario.</span>')
+            return redirect('comentario-detail', id=id)
+
+        repo = ComentarioRepository()
         repo.delete(comentario)
         return redirect('comentario-list')
 
@@ -51,32 +55,34 @@ class ComentarioUpdateView(View):
         repo = ComentarioRepository()
         comentario = get_object_or_404(Comentario, id=id)
 
-        if request.user != comentario.autor and not request.user.is_staff:
+        if request.user != comentario.autor:
             messages.error(request, '<span style="color: red;">No tienes permiso para editar este comentario.</span>')
             return redirect('comentario-detail', id=id)
 
+        form = ComentarioForm(instance=comentario)
         return render(
             request,
             'comentarios/update.html',
-            dict(comentario=comentario)
+            dict(form=form)
         )
 
     def post(self, request, id, *args, **kwargs):
         repo = ComentarioRepository()
         comentario = get_object_or_404(Comentario, id=id)
 
-        if request.user != comentario.autor and not request.user.is_staff:
+        if request.user != comentario.autor:
             messages.error(request, '<span style="color: red;">No tienes permiso para editar este comentario.</span>')
             return redirect('comentario-detail', id=id)
 
-        comentario_text = request.POST.get('comentario')
-
-        repo.update(
-            comentario=comentario,
-            comentario_text=comentario_text
+        form = ComentarioForm(request.POST, instance=comentario)
+        if form.is_valid():
+            form.save()
+            return redirect('comentario-detail', comentario.id)
+        return render(
+            request,
+            'comentarios/update.html',
+            dict(form=form)
         )
-        return redirect('comentario-detail', comentario.id)
-
 
 class ComentarioCreateView(View):
     def get(self, request, *args, **kwargs):

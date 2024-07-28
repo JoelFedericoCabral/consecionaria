@@ -9,11 +9,15 @@
             <p class="card-text">Comentario: {{ comentario.comentario }}</p>
         </div>
     </div>
-    <a href="{% url 'comentario-update' comentario.id %}" class="btn btn-success mt-3">Editar</a>
-    <form action="{% url 'comentario-delete' comentario.id %}" method="post" class="d-inline">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
-    </form>
+    {% if user == comentario.autor %}
+        <a href="{% url 'comentario-update' comentario.id %}" class="btn btn-success mt-3">Editar</a>
+    {% endif %}
+    {% if user.is_staff or user == comentario.autor %}
+        <form action="{% url 'comentario-delete' comentario.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
+        </form>
+    {% endif %}
     <a href="{% url 'comentario-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Comentarios</a>
 </div>
 {% endblock %}
