@@ -2,7 +2,9 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Lista de Modelos de Autos</h2>
+    {% if user.is_staff %}
     <a href="{% url 'modelo-create' %}" class="btn btn-primary mb-3">Crear Modelo</a>
+    {% endif %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,11 +20,13 @@
                     <td>{{ modelo.marca.nombre }}</td>
                     <td>
                         <a href="{% url 'modelo-detail' modelo.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        {% if user.is_staff %}
                         <a href="{% url 'modelo-update' modelo.id %}" class="btn btn-success btn-sm">Editar</a>
                         <form action="{% url 'modelo-delete' modelo.id %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

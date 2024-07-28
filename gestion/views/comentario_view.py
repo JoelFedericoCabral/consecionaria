@@ -1,6 +1,7 @@
 from django.http import HttpResponseNotAllowed
 from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect
+from gestion.decorators import staff_required
 from gestion.forms import ComentarioForm
 from gestion.models import Comentario
 from gestion.repositories.comentario_repository import ComentarioRepository
@@ -32,6 +33,8 @@ class ComentarioDetailView(View):
             )
         )
 
+
+@method_decorator(staff_required, name='dispatch')
 class ComentarioDeleteView(View):
     def post(self, request, id, *args, **kwargs):
         repo = ComentarioRepository()
@@ -49,7 +52,7 @@ class ComentarioUpdateView(View):
         comentario = get_object_or_404(Comentario, id=id)
 
         if request.user != comentario.autor and not request.user.is_staff:
-            messages.error(request, 'No tienes permiso para editar este comentario.')
+            messages.error(request, '<span style="color: red;">No tienes permiso para editar este comentario.</span>')
             return redirect('comentario-detail', id=id)
 
         return render(
@@ -63,7 +66,7 @@ class ComentarioUpdateView(View):
         comentario = get_object_or_404(Comentario, id=id)
 
         if request.user != comentario.autor and not request.user.is_staff:
-            messages.error(request, 'No tienes permiso para editar este comentario.')
+            messages.error(request, '<span style="color: red;">No tienes permiso para editar este comentario.</span>')
             return redirect('comentario-detail', id=id)
 
         comentario_text = request.POST.get('comentario')
@@ -73,6 +76,7 @@ class ComentarioUpdateView(View):
             comentario_text=comentario_text
         )
         return redirect('comentario-detail', comentario.id)
+
 
 class ComentarioCreateView(View):
     def get(self, request, *args, **kwargs):

@@ -20,11 +20,13 @@
                     <td>{{ cita.fecha }}</td>
                     <td>
                         <a href="{% url 'cita-detail' cita.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        {% if user.is_staff %}
                         <a href="{% url 'cita-update' cita.id %}" class="btn btn-success btn-sm">Editar</a>
                         <form action="{% url 'cita-delete' cita.id %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

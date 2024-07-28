@@ -21,10 +21,12 @@
                     <td>
                         <a href="{% url 'comentario-detail' comentario.id %}" class="btn btn-info btn-sm">Detalles</a>
                         <a href="{% url 'comentario-update' comentario.id %}" class="btn btn-success btn-sm">Editar</a>
+                        {% if user.is_staff %}
                         <form action="{% url 'comentario-delete' comentario.id %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

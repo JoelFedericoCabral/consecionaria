@@ -37,6 +37,10 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return cd.get('password2')
 
+
+
+
+
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='Usuario', max_length=30)
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
