@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Detalles del Auto</h2>
+    <br>
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">{{ auto.modelo.marca }} {{ auto.modelo.nombre }}</h3>
@@ -15,6 +16,7 @@
             {% endif %}
         </div>
     </div>
+    <br>
     <a href="{% url 'auto-update' auto.id %}" class="btn btn-success mt-3">Editar</a>
     <form action="{% url 'auto-delete' auto.id %}" method="post" class="d-inline">
         {% csrf_token %}

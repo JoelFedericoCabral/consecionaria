@@ -42,7 +42,7 @@ class AutoUpdateView(View):
     def post(self, request, id, *args, **kwargs):
         repo = AutoRepository()
         auto = get_object_or_404(Auto, id=id)
-        form = AutoForm(request.POST, instance=auto)
+        form = AutoForm(request.POST, request.FILES, instance=auto)
         if form.is_valid():
             form.save()
             return redirect('auto-detail', auto.id)

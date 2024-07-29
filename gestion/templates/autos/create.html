@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container">
     <h2>Crear Auto</h2>
+    <br>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
@@ -28,6 +29,7 @@
             <label for="id_imagen">Imagen:</label>
             {{ form.imagen }}
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

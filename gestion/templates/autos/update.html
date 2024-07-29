@@ -1,34 +1,37 @@
-{% extends "home/base.html" %}
+{% extends 'home/base.html' %}
 {% block content %}
-<div class="container mt-3">
-    <h2>Actualizar Auto</h2>
-    <form method="post">
+<div class="container">
+    <h2>Editar Auto</h2>
+    <br>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-            <label>Modelo</label>
-            <select name="modelo_id" class="form-control" required>
-                {% for modelo in modelos %}
-                    <option value="{{ modelo.id }}" {% if modelo.id == auto.modelo.id %}selected{% endif %}>{{ modelo.nombre }}</option>
-                {% endfor %}
-            </select>
+            <label for="id_marca">Marca:</label>
+            {{ form.marca }}
         </div>
         <div class="form-group">
-            <label>Categoria</label>
-            <select name="categoria_id" class="form-control" required>
-                {% for categoria in categorias %}
-                    <option value="{{ categoria.id }}" {% if categoria.id == auto.categoria.id %}selected{% endif %}>{{ categoria.nombre }}</option>
-                {% endfor %}
-            </select>
+            <label for="id_modelo">Modelo:</label>
+            {{ form.modelo }}
         </div>
         <div class="form-group">
-            <label>Precio</label>
-            <input type="number" name="precio" class="form-control" value="{{ auto.precio }}" required>
+            <label for="id_categoria">Categoría:</label>
+            {{ form.categoria }}
         </div>
         <div class="form-group">
-            <label>Descripción</label>
-            <textarea name="descripcion" class="form-control" required>{{ auto.descripcion }}</textarea>
+            <label for="id_precio">Precio:</label>
+            {{ form.precio }}
         </div>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <div class="form-group">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="id_imagen">Imagen:</label>
+            {{ form.imagen }}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 {% endblock %}

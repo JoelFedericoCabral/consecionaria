@@ -22,21 +22,17 @@ class UserRegistrationForm(forms.ModelForm):
             },
         }
 
-
     def __init__(self, *args, **kwargs):
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            self.fields[field_name].help_text = None
-        
-        
-
+            field.help_text = None
+            field.label_suffix = ''
 
     def clean_password2(self):
         cd = self.cleaned_data
         if cd.get('password1') != cd.get('password2'):
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return cd.get('password2')
-
 
 
 
