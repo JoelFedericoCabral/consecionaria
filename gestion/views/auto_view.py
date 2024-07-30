@@ -1,7 +1,7 @@
 from django.http import HttpResponseNotAllowed
 from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect
-from gestion.models import Auto, ModeloAuto, Categoria
+from gestion.models import Auto, ModeloAuto, Comentario
 from gestion.repositories.auto_repository import AutoRepository
 from gestion.forms import AutoForm
 from django.contrib.auth.decorators import login_required
@@ -18,7 +18,8 @@ class AutoDetailView(View):
     def get(self, request, id, *args, **kwargs):
         repo = AutoRepository()
         auto = get_object_or_404(Auto, id=id)
-        return render(request, 'autos/detail.html', dict(auto=auto))
+        comentarios = Comentario.objects.filter(auto=auto)
+        return render(request, 'autos/detail.html', dict(auto=auto, comentarios=comentarios))
 
 @method_decorator([login_required, staff_required], name='dispatch')
 class AutoDeleteView(View):

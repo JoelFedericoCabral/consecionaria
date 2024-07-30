@@ -23,5 +23,21 @@
         <button type="submit" class="btn btn-danger mt-3">Eliminar</button>
     </form>
     <a href="{% url 'auto-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Autos</a>
+    <br><br>
+    <br><br>
+
+    <h3>Comentarios</h3>
+    {% if comentarios %}
+        <ul>
+            {% for comentario in comentarios %}
+                <li>
+                    Usuario: <strong>{{ comentario.autor.username }}:</strong>
+                    {{ comentario.comentario }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay comentarios para este auto.</p>
+    {% endif %}
 </div>
 {% endblock %}
