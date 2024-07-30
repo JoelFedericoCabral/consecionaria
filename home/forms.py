@@ -7,6 +7,7 @@ class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label='Repite la contraseña', widget=forms.PasswordInput)
     first_name = forms.CharField(label='Nombre', max_length=30)
     last_name = forms.CharField(label='Apellidos', max_length=30)
+    email = forms.EmailField(label='Correo Electrónico')
 
     class Meta:
         model = User
@@ -35,9 +36,6 @@ class UserRegistrationForm(forms.ModelForm):
         return cd.get('password2')
 
 
-
-
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='Usuario', max_length=30)
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-

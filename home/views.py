@@ -12,7 +12,19 @@ class AuthView(View):
         return render(request, 'home/auth.html', {'login_form': login_form, 'register_form': register_form})
 
     def post(self, request):
-        if 'username' in request.POST and 'password' in request.POST:
+        if 'username' in request.POST and 'password1' in request.POST and 'password2' in request.POST:
+            register_form = UserRegistrationForm(request.POST)
+            if register_form.is_valid():
+                new_user = register_form.save(commit=False)
+                new_user.set_password(register_form.cleaned_data['password1'])
+                new_user.save()
+                user = authenticate(username=new_user.username, password=register_form.cleaned_data['password1'])
+                if user:
+                    login(request, user)
+                    return redirect('index')
+            else:
+                return render(request, 'home/auth.html', {'register_form': register_form, 'login_form': UserLoginForm()})
+        elif 'username' in request.POST and 'password' in request.POST:
             login_form = UserLoginForm(data=request.POST)
             if login_form.is_valid():
                 user = authenticate(request, username=login_form.cleaned_data['username'], password=login_form.cleaned_data['password'])
@@ -20,19 +32,7 @@ class AuthView(View):
                     login(request, user)
                     return redirect('index')
             return render(request, 'home/auth.html', {'login_form': login_form, 'register_form': UserRegistrationForm()})
-        elif 'username' in request.POST and 'password1' in request.POST and 'password2' in request.POST:
-            register_form = UserRegistrationForm(request.POST)
-            if register_form.is_valid():
-                new_user = register_form.save(commit=False)
-                new_user.set_password(register_form.cleaned_data['password1'])
-                new_user.save()
-                user = authenticate(username=new_user.username, password=register_form.cleaned_data['password1'])
-                if user is not None:
-                    login(request, user)
-                    return redirect('index')
-            return render(request, 'home/auth.html', {'register_form': register_form, 'login_form': UserLoginForm()})
         return redirect('login')
-
 class LogoutView(View):
     def get(self, request):
         logout(request)
