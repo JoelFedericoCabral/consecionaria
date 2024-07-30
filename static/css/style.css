@@ -112,9 +112,9 @@ input {
                 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 800px; /* Ajustar el ancho */
+    width: 800px;
     max-width: 100%;
-    min-height: 700px; /* Mantener la altura */
+    min-height: 700px;
 }
 
 .form-container {
@@ -205,13 +205,13 @@ input {
     text-align: center;
     top: 0;
     height: 100%;
-    width: 50%; /* Ajustar el ancho de los paneles */
+    width: 50%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
 }
 
 .overlay-left {
-    transform: translateX(-100%); /* Ajustar el valor de translateX para evitar superposición */
+    transform: translateX(-100%);
 }
 
 .container.right-panel-active .overlay-left {
@@ -220,7 +220,7 @@ input {
 
 .overlay-right {
     right: 0;
-    transform: translateX(100%); /* Ajustar el valor de translateX para evitar superposición */
+    transform: translateX(0);
 }
 
 .container.right-panel-active .overlay-right {
