@@ -24,20 +24,19 @@
     </form>
     <a href="{% url 'auto-list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Autos</a>
     <br><br>
-    <br><br>
 
     <h3>Comentarios</h3>
-    {% if comentarios %}
-        <ul>
+    <div class="comment-section" style="margin-top: 20px;">
+        {% if comentarios %}
             {% for comentario in comentarios %}
-                <li>
-                    Usuario: <strong>{{ comentario.autor.username }}:</strong>
-                    {{ comentario.comentario }}
-                </li>
+                <div class="comment-card" style="background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
+                    <div class="comment-author" style="font-weight: bold; margin-bottom: 10px;">Usuario: <strong>{{ comentario.autor.username }}:</strong></div>
+                    <div class="comment-text" style="margin-bottom: 10px; padding: 10px;">{{ comentario.comentario }}</div>
+                </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>No hay comentarios para este auto.</p>
-    {% endif %}
+        {% else %}
+            <p>No hay comentarios para este auto.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
