@@ -34,6 +34,10 @@ class InventarioForm(forms.ModelForm):
     class Meta:
         model = Inventario
         fields = ['auto', 'cantidad']
+        widgets = {
+            'auto': forms.Select(attrs={'class': 'form-control'}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 
 
@@ -53,3 +57,7 @@ class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['auto', 'comentario']
+        widgets = {
+            'auto': forms.Select(attrs={'class': 'form-control'}),
+            'comentario': forms.Textarea(attrs={'class': 'form-control'}),
+        }

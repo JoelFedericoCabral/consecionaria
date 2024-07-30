@@ -1,10 +1,19 @@
-{% extends "home/base.html" %}
+{% extends 'home/base.html' %}
 {% block content %}
-<div class="container mt-3">
+<div class="container">
     <h2>Crear Comentario</h2>
+    <br>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            <label for="id_auto">Auto:</label>
+            {{ form.auto }}
+        </div>
+        <div class="form-group">
+            <label for="id_comentario">Comentario:</label>
+            {{ form.comentario }}
+        </div>
+        <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

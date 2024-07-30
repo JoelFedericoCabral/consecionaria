@@ -65,15 +65,27 @@ class InventarioUpdateView(View):
             return redirect('inventario-detail', inventario.id)
         return render(request, 'inventarios/update.html', {'form': form})
 
-@method_decorator([login_required, staff_required], name='dispatch')
+@method_decorator(staff_required, name='dispatch')
 class InventarioCreateView(View):
     def get(self, request, *args, **kwargs):
         form = InventarioForm()
-        return render(request, 'inventarios/create.html', {'form': form})
+        return render(
+            request,
+            'inventarios/create.html',
+            dict(
+                form=form
+            )
+        )
 
     def post(self, request, *args, **kwargs):
         form = InventarioForm(request.POST)
         if form.is_valid():
-            nuevo_inventario = form.save()
-            return redirect('inventario-detail', nuevo_inventario.id)
-        return render(request, 'inventarios/create.html', {'form': form})
+            form.save()
+            return redirect('inventario-list')
+        return render(
+            request,
+            'inventarios/create.html',
+            dict(
+                form=form
+            )
+        )
