@@ -22,6 +22,14 @@
             <a class="navbar-brand" href="{% url 'cita-list' %}">Citas</a>
             <a class="navbar-brand" href="{% url 'financiamiento-list' %}">Financiamientos</a>
             {% if authenticated_user %}
+                {% if authenticated_user.is_staff %}
+                    <a class="navbar-brand" href="{% url 'cliente-list' %}">Clientes</a>
+                    <a class="navbar-brand" href="{% url 'categoria-list' %}">Categorías</a>
+                    <a class="navbar-brand" href="{% url 'venta-list' %}">Ventas</a>
+                    <a class="navbar-brand" href="{% url 'empleado-list' %}">Empleados</a>
+                    <a class="navbar-brand" href="{% url 'proveedor-list' %}">Proveedores</a>
+                    <a class="navbar-brand" href="{% url 'inventario-list' %}">Inventarios</a>
+                {% endif %}
                 <span class="navbar-text">{{ authenticated_user.username }}</span>
                 <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
             {% else %}

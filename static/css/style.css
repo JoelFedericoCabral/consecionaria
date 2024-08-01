@@ -241,3 +241,24 @@ input {
     height: 40px;
     width: 40px;
 }
+
+
+
+.navbar-nav.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.card-title {
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
