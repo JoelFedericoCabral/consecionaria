@@ -14,7 +14,7 @@
             <br>
             {{ register_form|crispy }}
             <br>
-            <button type="submit">Registrar</button>
+            <button type="submit">Registrarme</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
@@ -22,9 +22,9 @@
             {% csrf_token %}
             <h1>Iniciar sesión</h1>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com" class="social" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.google.com.ar" class="social" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                <a href="https://www.linkedin.com/" class="social" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>o utiliza tu cuenta</span>
             <input type="text" name="username" placeholder="Usuario" required />
