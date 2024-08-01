@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     {% block head %}{% endblock %}
-    
 </head>
 <body class="{% if 'login' in request.path or 'register' in request.path %}auth-body{% endif %}">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,18 +21,10 @@
             <a class="navbar-brand" href="{% url 'servicio-list' %}">Servicios</a>
             <a class="navbar-brand" href="{% url 'cita-list' %}">Citas</a>
             <a class="navbar-brand" href="{% url 'financiamiento-list' %}">Financiamientos</a>
-            {% if user.is_authenticated %}
-                {% if user.is_staff %}
-                    <a class="navbar-brand" href="{% url 'cliente-list' %}">Clientes</a>
-                    <a class="navbar-brand" href="{% url 'categoria-list' %}">Categorías</a>
-                    <a class="navbar-brand" href="{% url 'venta-list' %}">Ventas</a>
-                    <a class="navbar-brand" href="{% url 'empleado-list' %}">Empleados</a>
-                    <a class="navbar-brand" href="{% url 'proveedor-list' %}">Proveedores</a>
-                    <a class="navbar-brand" href="{% url 'inventario-list' %}">Inventarios</a>
-                {% endif %}
+            {% if authenticated_user %}
+                <span class="navbar-text">{{ authenticated_user.username }}</span>
                 <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
             {% else %}
-                
             {% endif %}
         </div>
     </nav>
