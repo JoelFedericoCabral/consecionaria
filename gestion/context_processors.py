@@ -15,7 +15,8 @@ def all_brands(request):
     return {'all_brands': brands}
 
 def all_categories(request):
-    categories = Categoria.objects.all().values_list('nombre', flat=True)
-    return {
-        'all_categories': categories
-    }
+    categories = cache.get('categories')
+    if categories is None:
+        categories = Categoria.objects.all()  # Return full objects
+        cache.set('categories', categories, 36000)
+    return {'all_categories': categories}

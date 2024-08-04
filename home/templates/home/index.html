@@ -1,10 +1,10 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-<div class="row" style="margin-top: 1cm;">
+<div class="row" style="margin-top: 2cm;">
     <div class="col"></div>
     <div class="col">
-        <div class="card mt-4">
+        <div class="card">
             <img class="card-img-top" src="" alt="">
             <div class="card-body">
                 <h4 class="card-title">
@@ -19,6 +19,31 @@
                 <p class="card-text">Bienvenido al Sistema de Gestión de Concesionaria de Autos</p>
             </div>
         </div>
+        <!-- Sección de Categorías -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-center" style="margin-bottom: 10px;">Categorías Disponibles</h5>
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                    {% for category in all_categories %}
+                        <a class="nav-link" href="{% url 'categoria-detail' category.id %}" style="margin-right: 10px; white-space: nowrap; font-size: 14px;">{{ category.nombre }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Sección de Marcas -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-center" style="margin-bottom: 10px;">Marcas Disponibles</h5>
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                    {% for brand in all_brands %}
+                        <a class="nav-link" href="{% url 'marca-detail' brand.id %}" style="margin-right: 10px; white-space: nowrap; font-size: 14px;">{{ brand.nombre }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col"></div>
 </div>
