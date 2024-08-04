@@ -104,7 +104,7 @@ Para cualquier consulta o comentario, puedes contactarme a través de mi correo:
 - f.cabral@itecriocuarto.org.ar
 
 
-## Mejoras Futuras
+## Mejoras
 
 Aunque el sistema de gestión de concesionaria de autos está completamente funcional y cumple con los requisitos de la evaluación final, hay varias mejoras que podrían implementarse en el futuro para mejorar la experiencia del usuario y la funcionalidad del sistema. Algunas ideas incluyen:
 
