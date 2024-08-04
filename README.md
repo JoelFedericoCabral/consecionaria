@@ -4,10 +4,11 @@ Este proyecto es un sistema de gestión para una concesionaria de autos, desarro
 
 ## Tabla de Contenidos
 
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Características](#características)
-- [Contacto](#contacto)
+- [Instalación]
+- [Uso]
+- [Características]
+- [Contacto]
+- [Mejoras]
 
 ## Instalación
 
@@ -102,3 +103,21 @@ Este usuario tiene permisos limitados y puede interactuar con funcionalidades b�
 Para cualquier consulta o comentario, puedes contactarme a través de mi correo: 
 - f.cabral@itecriocuarto.org.ar
 
+
+## Mejoras Futuras
+
+Aunque el sistema de gestión de concesionaria de autos está completamente funcional y cumple con los requisitos de la evaluación final, hay varias mejoras que podrían implementarse en el futuro para mejorar la experiencia del usuario y la funcionalidad del sistema. Algunas ideas incluyen:
+
+- **Simulación de Financiamiento Real:** Mejorar el módulo de financiamiento para permitir a los usuarios simular diferentes planes de financiamiento con opciones de personalización como tasa de interés, plazo y cuota inicial.
+
+- **Interfaz de Usuario Mejorada:** Optimizar la apariencia y el diseño de la interfaz para proporcionar una experiencia de usuario más intuitiva y atractiva, utilizando tecnologías como Bootstrap 5 o frameworks de frontend modernos como React, entre otros. 
+
+- **Sistema de Notificaciones:** Implementar un sistema de notificaciones para mantener a los usuarios informados sobre actualizaciones importantes, como nuevos autos disponibles, recordatorios de citas, y más.
+
+- **Búsqueda Avanzada:** Añadir capacidades de búsqueda avanzada que permitan a los usuarios filtrar autos, clientes y otros datos por múltiples criterios, mejorando la facilidad de uso y la accesibilidad de la información.
+
+- **Internacionalización:** Ampliar el soporte multilingüe para facilitar el acceso al sistema a usuarios de diferentes regiones y mejorar la adaptabilidad del sistema en un entorno internacional.
+
+- **Soporte para Dispositivos Móviles:** Asegurar que la aplicación sea completamente responsive y accesible desde dispositivos móviles, proporcionando una experiencia fluida en teléfonos y tablets.
+
+Estas mejoras no solo incrementarán el valor del sistema, sino que también ofrecerán oportunidades para expandir el alcance y la funcionalidad del proyecto.
