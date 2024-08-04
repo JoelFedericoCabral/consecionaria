@@ -41,6 +41,10 @@ class CategoriaDeleteView(View):
     def get(self, request, id, *args, **kwargs):
         return HttpResponseNotAllowed(['POST'])
 
+
+
+
+
 @method_decorator(login_required, name='dispatch')
 class CategoriaUpdateView(View):
     def get(self, request, id, *args, **kwargs):
