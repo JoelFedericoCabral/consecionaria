@@ -83,7 +83,7 @@ Este usuario tiene permisos completos y acceso a todas las funcionalidades del s
 - Contraseña: probandoAndo
 
 
-Este usuario tiene permisos limitados y puede interactuar con funcionalidades básicas y cumpliendo con las desciptas en las consignas de la EFI.
+Este usuario tiene permisos limitados y puede interactuar con funcionalidades básicas y cumpliendo con las descriptas en las consignas de la EFI.
 
 
 ## Características
