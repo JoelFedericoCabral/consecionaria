@@ -4,6 +4,19 @@ from django.contrib.contenttypes.models import ContentType
 from gestion.models import Comentario
 
 class Command(BaseCommand):
+    """
+    Comando de Django para crear roles de usuario y permisos iniciales en el sistema.
+
+    Este archivo define un comando personalizado de Django que crea dos grupos
+    de usuarios ('staff' y 'usuarios') y les asigna los permisos necesarios para 
+    manejar el modelo Comentario. El grupo 'staff' recibe permisos administrativos,
+    mientras que el grupo 'usuarios' obtiene permisos para gestionar sus propios
+    comentarios.
+
+    Uso:
+        python manage.py <nombre_del_comando>
+    """
+
     help = 'Create initial user roles and permissions'
 
     def handle(self, *args, **kwargs):
