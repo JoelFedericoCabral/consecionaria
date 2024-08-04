@@ -91,18 +91,19 @@ Este usuario tiene permisos completos y acceso a todas las funcionalidades del s
 Este usuario tiene permisos limitados y puede interactuar con funcionalidades básicas y cumliendo con las desciptas en las consignas de la EFI.
 
 
-Características
-Gestión de Autos: Crear, actualizar, eliminar y visualizar autos.
-Gestión de Clientes: Registro y administración de clientes.
-Gestión de Ventas: Proceso de ventas de autos.
-Gestión de Empleados: Administración del personal.
-Gestión de Proveedores: Control de proveedores de autos.
-Gestión de Servicios: Servicios adicionales ofrecidos por la concesionaria.
-Citas: Programación de citas para servicios.
-Financiamiento: Opciones de financiamiento para clientes.
-Autenticación y Autorización: Sistema de login y registro con permisos basados en roles.
+## Características
+- Gestión de Autos: Crear, actualizar, eliminar y visualizar autos.
+- Gestión de Clientes: Registro y administración de clientes.
+- Gestión de Ventas: Proceso de ventas de autos.
+- Gestión de Empleados: Administración del personal.
+- Gestión de Proveedores: Control de proveedores de autos.
+- Gestión de Servicios: Servicios adicionales ofrecidos por la concesionaria.
+- Citas: Programación de citas para servicios.
+- Financiamiento: Opciones de financiamiento para clientes.
+- Autenticación y Autorización: Sistema de login y registro con permisos basados en roles.
 
 
-Contacto
-Para cualquier consulta o comentario, puedes contactarme a través de mi correo: f.cabral@itecriocuarto.org.ar
+## Contacto
+Para cualquier consulta o comentario, puedes contactarme a través de mi correo: 
+- f.cabral@itecriocuarto.org.ar
 
