@@ -7,10 +7,7 @@ Este proyecto es un sistema de gestión para una concesionaria de autos, desarro
 - [Instalación](#instalación)
 - [Uso](#uso)
 - [Características](#características)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 - [Contacto](#contacto)
-- [Agradecimientos](#agradecimientos)
 
 ## Instalación
 
