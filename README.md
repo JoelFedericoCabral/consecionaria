@@ -75,7 +75,7 @@ Para facilitar la evaluación del sistema, hemos creado usuarios de prueba con d
 - Contraseña: administrador
 
 
-Este usuario tiene permisos completos y acceso a todas las funcionalidades del sistema, incluyendo la gestión de clientes, ventas, empleados y proveedores.
+Este usuario tiene permisos completos y acceso a todas las funcionalidades del sistema, incluyendo la gestión de clientes, ventas, empleados y proveedores. Siempre respetando lo que pedia la consigna de la EFI en cuanto al administrador con rol de staff.
 
 
 ### Usuario Regular (Cliente)
@@ -83,7 +83,7 @@ Este usuario tiene permisos completos y acceso a todas las funcionalidades del s
 - Contraseña: probandoAndo
 
 
-Este usuario tiene permisos limitados y puede interactuar con funcionalidades básicas y cumliendo con las desciptas en las consignas de la EFI.
+Este usuario tiene permisos limitados y puede interactuar con funcionalidades básicas y cumpliendo con las desciptas en las consignas de la EFI.
 
 
 ## Características
