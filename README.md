@@ -29,7 +29,7 @@ Este proyecto es un sistema de gestión para una concesionaria de autos, desarro
 2. Navega al directorio del proyecto:
 
     ```bash
-    cd concesionaria
+    cd consecionaria
     ```
 
 3. Crea y activa un entorno virtual:
