@@ -75,9 +75,10 @@ python manage.py runserver
 ## Usuarios de Prueba
 Para facilitar la evaluación del sistema, hemos creado usuarios de prueba con diferentes roles. Puedes utilizar estas credenciales para acceder y evaluar las funcionalidades y restricciones implementadas para cada tipo de usuario.
 
-Usuario Staff (Administrador)
+### Usuario Staff (Administrador)
 Nombre de usuario: admin
 Contraseña: administrador
+
 
 Este usuario tiene permisos completos y acceso a todas las funcionalidades del sistema, incluyendo la gestión de clientes, ventas, empleados y proveedores.
 
