@@ -78,7 +78,7 @@ Para facilitar la evaluación del sistema, hemos creado usuarios de prueba con d
 Este usuario tiene permisos completos y acceso a todas las funcionalidades del sistema, incluyendo la gestión de clientes, ventas, empleados y proveedores. Siempre respetando lo que pedia la consigna de la EFI en cuanto al administrador con rol de staff.
 
 
-### Usuario Regular (Cliente)
+### Usuario Regular (Cliente No Staff)
 - Nombre de usuario: probando
 - Contraseña: probandoAndo
 
