@@ -50,11 +50,6 @@ Este proyecto es un sistema de gestión para una concesionaria de autos, desarro
     python manage.py migrate
     ```
 
-6. Carga datos iniciales si es necesario (opcional):
-
-    ```bash
-    python manage.py loaddata initial_data.json
-    ```
 
 ## Uso
 
