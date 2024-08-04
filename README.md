@@ -64,11 +64,17 @@ Para iniciar el servidor de desarrollo, ejecuta:
 
 ```bash
 python manage.py runserver
+```
 
 
-Accede al sistema desde tu navegador web en http://127.0.0.1:8000
+### Accede al sistema desde tu navegador web en:
 
-Usuarios de Prueba
+ ```
+    http://127.0.0.1:8000
+
+    ```
+
+## Usuarios de Prueba
 Para facilitar la evaluación del sistema, hemos creado usuarios de prueba con diferentes roles. Puedes utilizar estas credenciales para acceder y evaluar las funcionalidades y restricciones implementadas para cada tipo de usuario.
 
 Usuario Staff (Administrador)
