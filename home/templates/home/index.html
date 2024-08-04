@@ -1,17 +1,25 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
+<!-- Definimos una fila con un margen superior de 2cm -->
 <div class="row" style="margin-top: 2cm;">
+    <!-- Columna vacía para centrar el contenido -->
     <div class="col"></div>
+    <!-- Columna central donde se muestra el contenido principal -->
     <div class="col">
+        <!-- Tarjeta que da la bienvenida al usuario -->
         <div class="card">
+            <!-- Imagen superior de la tarjeta (por ahora vacía) -->
             <img class="card-img-top" src="" alt="">
             <div class="card-body">
                 <h4 class="card-title">
                     Hola
+                    <!-- Verificamos si hay un usuario autenticado -->
                     {% if authenticated_user %}
+                        <!-- Mostramos el nombre del usuario autenticado -->
                         {{ authenticated_user.first_name }}!
                     {% else %}
+                        <!-- Mostramos "Invitado" si no hay usuario autenticado -->
                         Invitado
                     {% endif %}
                 </h4>
@@ -22,22 +30,27 @@
         <!-- Sección de Categorías -->
         <div class="card mt-4">
             <div class="card-body">
+                <!-- Título de la sección de categorías -->
                 <h5 class="card-title text-center" style="margin-bottom: 10px;">Categorías Disponibles</h5>
+                <!-- Lista de categorías centradas y dispuestas en una sola línea -->
                 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                     {% for category in all_categories %}
+                        <!-- Enlace a la página de detalles de cada categoría -->
                         <a class="nav-link" href="{% url 'categoria-detail' category.id %}" style="margin-right: 10px; white-space: nowrap; font-size: 14px;">{{ category.nombre }}</a>
                     {% endfor %}
                 </div>
             </div>
         </div>
         
-
         <!-- Sección de Marcas -->
         <div class="card mt-4">
             <div class="card-body">
+                <!-- Título de la sección de marcas -->
                 <h5 class="card-title text-center" style="margin-bottom: 10px;">Marcas Disponibles</h5>
+                <!-- Lista de marcas centradas y dispuestas en una sola línea -->
                 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                     {% for brand in all_brands %}
+                        <!-- Enlace a la página de detalles de cada marca -->
                         <a class="nav-link" href="{% url 'marca-detail' brand.id %}" style="margin-right: 10px; white-space: nowrap; font-size: 14px;">{{ brand.nombre }}</a>
                     {% endfor %}
                 </div>
@@ -45,6 +58,7 @@
         </div>
 
     </div>
+    <!-- Columna vacía para centrar el contenido -->
     <div class="col"></div>
 </div>
 {% endblock %}

@@ -2,44 +2,57 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block head %}
+  <!-- Carga de estilos CSS adicionales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
+
 {% block content %}
+<!-- Contenedor principal que agrupa los formularios de registro e inicio de sesión -->
 <div class="container" id="container">
+    <!-- Formulario de registro -->
     <div class="form-container sign-up-container">
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
             <h1>Registro</h1>
             <br>
+            <!-- Renderizado del formulario de registro usando crispy_forms -->
             {{ register_form|crispy }}
             <br>
             <button type="submit">Registrarme</button>
         </form>
     </div>
+    
+    <!-- Formulario de inicio de sesión -->
     <div class="form-container sign-in-container">
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <h1>Iniciar sesión</h1>
             <div class="social-container">
+                <!-- Enlaces a redes sociales para iniciar sesión (simulados) -->
                 <a href="https://www.facebook.com" class="social" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.google.com.ar" class="social" target="_blank"><i class="fab fa-google-plus-g"></i></a>
                 <a href="https://www.linkedin.com/" class="social" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>o utiliza tu cuenta</span>
+            <!-- Campos de entrada para el nombre de usuario y la contraseña -->
             <input type="text" name="username" placeholder="Usuario" required />
             <input type="password" name="password" placeholder="Contraseña" required />
             <a href="#">Olvidaste tu contraseña?</a>
             <button type="submit">Iniciar sesión</button>
         </form>
     </div>
+    
+    <!-- Contenedor de la animación de cambio entre formularios -->
     <div class="overlay-container">
         <div class="overlay">
+            <!-- Panel de la animación cuando se pasa del registro al inicio de sesión -->
             <div class="overlay-panel overlay-left">
                 <h1>Bienvenido!</h1>
                 <p>Si ya eres usuario, solo inicia sesión!</p>
                 <button class="ghost" id="signIn">Iniciar sesión</button>
             </div>
+            <!-- Panel de la animación cuando se pasa del inicio de sesión al registro -->
             <div class="overlay-panel overlay-right">
                 <h1>Hola!</h1>
                 <p>Registrate y comienza tu viaje con nosotros!</p>
@@ -49,6 +62,8 @@
     </div>
 </div>
 {% endblock %}
+
 {% block scripts %}
+<!-- Carga del archivo JavaScript que maneja la lógica de la animación entre formularios -->
 <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
