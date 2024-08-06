@@ -76,7 +76,7 @@ class CitaUpdateView(View):
         return redirect('cita-detail', cita.id)
 
 
-@method_decorator([login_required, staff_required], name='dispatch')
+@method_decorator([login_required], name='dispatch')
 class CitaCreateView(View):
     def get(self, request, *args, **kwargs):
         clientes = Cliente.objects.all()
