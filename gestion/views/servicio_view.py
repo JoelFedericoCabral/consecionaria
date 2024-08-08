@@ -30,7 +30,7 @@ class ServicioDetailView(View):
                 servicio=servicio
             )
         )
-
+@method_decorator(staff_required, name='dispatch')
 class ServicioDeleteView(View):
     def post(self, request, id, *args, **kwargs):
         repo = ServicioRepository()

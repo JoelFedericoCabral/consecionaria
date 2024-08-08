@@ -13,3 +13,10 @@ class ServicioRepository:
 
     def delete(self, servicio: Servicio):
         return servicio.delete()
+
+    def update(self, servicio: Servicio, nombre: str, descripcion: str, precio: float) -> Servicio:
+        servicio.nombre = nombre
+        servicio.descripcion = descripcion
+        servicio.precio = precio
+        servicio.save()
+        return servicio
