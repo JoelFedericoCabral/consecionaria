@@ -1,5 +1,5 @@
 from django import forms
-from gestion.models import Auto, Marca, ModeloAuto, Categoria, Inventario, Cliente, Comentario
+from gestion.models import Auto, Marca, ModeloAuto, Categoria, Inventario, Cliente, Comentario, Empleado
 from django.contrib.auth.models import User
 
 class AutoForm(forms.ModelForm):
@@ -112,3 +112,18 @@ class ComentarioForm(forms.ModelForm):
             'auto': forms.Select(attrs={'class': 'form-control'}),
             'comentario': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+class EmpleadoForm(forms.ModelForm):
+    class Meta:
+        model = Empleado
+        fields = ['nombre', 'apellido', 'telefono', 'dni', 'direccion', 'puesto']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
+            'dni': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'puesto': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+

@@ -100,17 +100,17 @@ class Venta(models.Model):
         return f'{self.cliente.user.username} - {self.auto.modelo.nombre}'
 
 class Empleado(models.Model):
-    """
-    Modelo que representa un empleado de la concesionaria, vinculado a un usuario del sistema.
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    puesto = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=100, default="Nombre")
+    apellido = models.CharField(max_length=100, default="Apellido")
+    telefono = models.CharField(max_length=15, default="+Telefono")
+    dni = models.CharField(max_length=10, unique=True, default="DNI")
+    direccion = models.CharField(max_length=255, default="Direccion")
+    puesto = models.CharField(max_length=100, default="Puesto")
 
     def __str__(self):
-        """
-        Devuelve la representación en cadena del modelo, que es el nombre de usuario del empleado.
-        """
-        return self.user.username
+        return f'{self.nombre} {self.apellido} ({self.user.username})'
+
 
 class Proveedor(models.Model):
     """

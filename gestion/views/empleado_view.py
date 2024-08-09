@@ -2,6 +2,7 @@ from django.http import HttpResponseNotAllowed
 from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect
 from gestion.decorators import staff_required
+from gestion.forms import EmpleadoForm
 from gestion.models import Empleado
 from gestion.repositories.empleado_repository import EmpleadoRepository
 from django.contrib.auth.decorators import login_required
@@ -63,21 +64,30 @@ class EmpleadoUpdateView(View):
         )
         return redirect('empleado-detail', empleado.id)
 
+
 @method_decorator([login_required, staff_required], name='dispatch')
 class EmpleadoCreateView(View):
     def get(self, request, *args, **kwargs):
-        return render(
-            request,
-            'empleados/create.html'
-        )
+        return render(request, 'empleados/create.html')
 
     def post(self, request, *args, **kwargs):
         repo = EmpleadoRepository()
         user = request.user
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        telefono = request.POST.get('telefono')
+        dni = request.POST.get('dni')
+        direccion = request.POST.get('direccion')
         puesto = request.POST.get('puesto')
 
         nuevo_empleado = repo.create(
             user=user,
+            nombre=nombre,
+            apellido=apellido,
+            telefono=telefono,
+            dni=dni,
+            direccion=direccion,
             puesto=puesto
         )
         return redirect('empleado-detail', nuevo_empleado.id)
+

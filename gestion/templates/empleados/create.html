@@ -2,8 +2,31 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Crear Empleado</h2>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" name="apellido" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" name="telefono" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>DNI</label>
+            <input type="text" name="dni" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" name="direccion" class="form-control" required>
+        </div>
         <div class="form-group">
             <label>Puesto</label>
             <input type="text" name="puesto" class="form-control" required>

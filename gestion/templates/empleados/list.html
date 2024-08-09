@@ -6,7 +6,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Usuario</th>
+                <th>Empleado</th>
                 <th>Puesto</th>
                 <th>Acciones</th>
             </tr>
@@ -14,7 +14,8 @@
         <tbody>
             {% for empleado in empleados %}
                 <tr>
-                    <td>{{ empleado.user.username }}</td>
+                    <!-- Mostramos el nombre y apellido del empleado -->
+                    <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
                     <td>{{ empleado.puesto }}</td>
                     <td>
                         <a href="{% url 'empleado-detail' empleado.id %}" class="btn btn-info btn-sm">Detalles</a>
