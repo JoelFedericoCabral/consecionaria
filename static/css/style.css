@@ -261,6 +261,7 @@ input {
     padding: 1.5rem;
 }
 
+
 /* Estilos para las tablas */
 .table.table-striped {
     background-color: #ffffff; /* Fondo blanco */
@@ -272,7 +273,7 @@ input {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05); /* Alternar color de fondo */
+    background-color: rgba(245, 243, 243, 0.05); /* Alternar color de fondo */
 }
 
 .table-striped > tbody > tr:hover {
@@ -288,3 +289,5 @@ input {
     padding: 1rem; /* Espaciado interior */
     background-color: #ffffff; /* Fondo blanco */
 }
+
+
