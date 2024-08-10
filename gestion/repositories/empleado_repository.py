@@ -20,5 +20,15 @@ class EmpleadoRepository:
             puesto=puesto
         )
 
+    def update(self, empleado: Empleado, nombre: str, apellido: str, telefono: str, dni: str, direccion: str, puesto: str) -> Empleado:
+        empleado.nombre = nombre
+        empleado.apellido = apellido
+        empleado.telefono = telefono
+        empleado.dni = dni
+        empleado.direccion = direccion
+        empleado.puesto = puesto
+        empleado.save()
+        return empleado
+
     def delete(self, empleado: Empleado):
         return empleado.delete()

@@ -56,13 +56,27 @@ class EmpleadoUpdateView(View):
     def post(self, request, id, *args, **kwargs):
         repo = EmpleadoRepository()
         empleado = get_object_or_404(Empleado, id=id)
+        
+        # Capturamos todos los campos del formulario
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        telefono = request.POST.get('telefono')
+        dni = request.POST.get('dni')
+        direccion = request.POST.get('direccion')
         puesto = request.POST.get('puesto')
-
+        
+        # Llamamos al método update pasándole todos los argumentos
         repo.update(
             empleado=empleado,
+            nombre=nombre,
+            apellido=apellido,
+            telefono=telefono,
+            dni=dni,
+            direccion=direccion,
             puesto=puesto
         )
         return redirect('empleado-detail', empleado.id)
+
 
 
 @method_decorator([login_required, staff_required], name='dispatch')

@@ -5,7 +5,11 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">{{ empleado.nombre }} {{ empleado.apellido }}</h3>
-            <p class="card-text">Puesto: {{ empleado.puesto }}</p>
+            <br>
+            <p class="card-text"><strong>Puesto:</strong> {{ empleado.puesto }}</p>
+            <p class="card-text"><strong>Teléfono:</strong> {{ empleado.telefono }}</p>
+            <p class="card-text"><strong>DNI:</strong> {{ empleado.dni }}</p>
+            <p class="card-text"><strong>Dirección:</strong> {{ empleado.direccion }}</p>
         </div>
     </div>
     <a href="{% url 'empleado-update' empleado.id %}" class="btn btn-success mt-3">Editar</a>
