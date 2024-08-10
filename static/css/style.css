@@ -242,8 +242,6 @@ input {
     width: 40px;
 }
 
-
-
 .navbar-nav.flex-row {
     display: flex;
     flex-direction: row;
@@ -261,4 +259,32 @@ input {
 
 .card-body {
     padding: 1.5rem;
+}
+
+/* Estilos para las tablas */
+.table.table-striped {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra similar a card */
+    margin-bottom: 1rem;
+    padding: 1rem;
+    
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05); /* Alternar color de fondo */
+}
+
+.table-striped > tbody > tr:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Color de fondo al pasar el cursor */
+}
+
+.table thead th {
+    background-color: #f8f9fa; /* Color de fondo del encabezado */
+    border-bottom: 2px solid #dee2e6; /* Línea inferior */
+}
+
+.table tbody td {
+    padding: 1rem; /* Espaciado interior */
+    background-color: #ffffff; /* Fondo blanco */
 }
