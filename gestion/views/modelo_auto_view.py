@@ -62,12 +62,26 @@ class ModeloAutoUpdateView(View):
         marca = get_object_or_404(Marca, id=request.POST.get('marca_id'))
         nombre = request.POST.get('nombre')
 
-        repo.update(
+        if not nombre:
+            marcas = Marca.objects.all()
+            return render(
+                request,
+                'modelos/update.html',
+                dict(
+                    modelo=modelo,
+                    marcas=marcas,
+                    error="El campo 'nombre' es obligatorio."
+                )
+            )
+
+        # Actualizar el objeto
+        modelo_actualizado = repo.update(
             modelo=modelo,
             marca=marca,
             nombre=nombre
         )
-        return redirect('modelo-detail', modelo.id)
+        return redirect('modelo-detail', modelo_actualizado.id)
+
 @method_decorator([login_required, staff_required], name='dispatch')
 class ModeloAutoCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -84,6 +98,17 @@ class ModeloAutoCreateView(View):
         repo = ModeloAutoRepository()
         marca = get_object_or_404(Marca, id=request.POST.get('marca_id'))
         nombre = request.POST.get('nombre')
+
+        if not nombre:
+            marcas = Marca.objects.all()
+            return render(
+                request,
+                'modelos/create.html',
+                dict(
+                    marcas=marcas,
+                    error="El campo 'nombre' es obligatorio."
+                )
+            )
 
         nuevo_modelo = repo.create(
             marca=marca,

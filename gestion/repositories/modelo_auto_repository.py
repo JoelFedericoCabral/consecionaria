@@ -13,3 +13,9 @@ class ModeloAutoRepository:
 
     def delete(self, modelo_auto: ModeloAuto):
         return modelo_auto.delete()
+
+    def update(self, modelo: ModeloAuto, marca: Marca, nombre: str) -> ModeloAuto:
+        modelo.marca = marca
+        modelo.nombre = nombre
+        modelo.save()
+        return modelo
