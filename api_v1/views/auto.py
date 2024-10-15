@@ -32,7 +32,7 @@ class AutoViewSet(ModelViewSet):
             instance = self.get_object()
         except Auto.DoesNotExist:
             # Manejo de excepción cuando no se encuentra el auto
-            raise NotFound({"detail": "El auto con el ID proporcionado no existe o ha sido eliminado."})
+            raise NotFound("El auto no existe.")
         
         # Ejecutar la eliminación del auto
         self.perform_destroy(instance)
