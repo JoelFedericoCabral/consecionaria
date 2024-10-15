@@ -50,6 +50,8 @@ class AutoViewSet(ModelViewSet):
 
 
 
+# EJEMPLO DE CREATE CON MSJ PERSONALIZADO QUE NO UTILIZARE EN ESTE PROYECTO
+
 
     # def create(self, request, *args, **kwargs):
     #     # Delega la creación al serializador

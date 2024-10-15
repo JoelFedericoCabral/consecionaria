@@ -10,7 +10,6 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Categoria
         fields = '__all__'
 
-
 class MarcaSerializer(serializers.ModelSerializer):
     """
     Serializador para el modelo Marca.
@@ -18,7 +17,6 @@ class MarcaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Marca
         fields = '__all__'
-
 
 class ModeloAutoSerializer(serializers.ModelSerializer):
     """
@@ -29,7 +27,6 @@ class ModeloAutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModeloAuto
         fields = ['nombre', 'marca']
-
 
 class AutoSerializer(serializers.ModelSerializer):
     """
@@ -73,6 +70,7 @@ class AutoSerializer(serializers.ModelSerializer):
         return auto
 
     def update(self, instance, validated_data):
+
         """
         Actualiza una instancia de Auto existente.
         También maneja la actualización de las instancias relacionadas de Categoria, Marca y ModeloAuto.
@@ -101,68 +99,3 @@ class AutoSerializer(serializers.ModelSerializer):
         
         instance.save()
         return instance
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from rest_framework import serializers
-# from gestion.models import Auto, Categoria
-
-
-# class CategorySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Categoria
-#         fields = '__all__'
-
-
-# class AutoSerializer(serializers.ModelSerializer):
-#     categoria = CategorySerializer()
-#     description = serializers.SerializerMethodField()
-
-#     class Meta:
-#         model = Auto
-#         fields = '__all__'
-
-#     def get_description(self, value):
-#         if value.descripcion is None:
-#             return "No posee descripcion"
-#         return value.descripcion
-    
-#     def update(self, instance, validated_data):
-
-#         category_data = validated_data.pop(
-#             'categoria', None
-#         )
-
-#         categoria, _= Categoria.object.get_or_create(
-#             **category_data
-#         )
-
-#         instance.categoria = categoria
-#         instance.nombre = validated_data.get('nombre', instance.nombre)
-#         instance.save()
-
-#         return instance
-
-#     def create(self, validated_data):
-#         auto = Auto.objects.create(
-#             **validated_data,
-#             #nombre = validated_data['nombre'],
-#             #precio = validated_data['precio'],
-#             #imagen = validated_data['imagen'],
-#             #descripcion = validated_data['descripcion'],
-#             #marca = validated_data['marca'],
-#             #modelo = validated_data['modelo'],
-            
-#         )
-#         return auto
