@@ -36,7 +36,7 @@ class Auto(models.Model):
     modelo = models.ForeignKey(ModeloAuto, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-    imagen = models.ImageField(upload_to='autos/')
+    imagen = models.ImageField(upload_to='autos/', null=True, blank=True)
     descripcion = models.TextField()
 
     def __str__(self):

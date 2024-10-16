@@ -27,10 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     # De terceros
     'rest_framework',
-    'crispy_forms',
-    'crispy_bootstrap4',
+    # COMENTAMOS LAS SIGUIENTES LINEAS DE CRISPY SOLO PARA QUE NO INTERFIERA CON LA INTERFAZ DE DRF
+    #'crispy_forms',
+    #'crispy_bootstrap4',
     # Propias
     'gestion',
     'home',
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 MIDDLEWARE = [
@@ -148,3 +150,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',  # JSONRenderer para respuestas JSON
+        'rest_framework.renderers.BrowsableAPIRenderer',  # Interfaz gráfica de DRF
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+}
+
+DJANGO_FILTERS_CONFIG = {
+    'DISABLE_HTML_FORM': True,  # Evita que django-filters intente renderizar formularios HTML
+}
