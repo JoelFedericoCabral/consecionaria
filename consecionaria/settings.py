@@ -31,8 +31,8 @@ INSTALLED_APPS = [
     # De terceros
     'rest_framework',
     # COMENTAMOS LAS SIGUIENTES LINEAS DE CRISPY SOLO PARA QUE NO INTERFIERA CON LA INTERFAZ DE DRF
-    'crispy_forms',
-    'crispy_bootstrap4',
+    #'crispy_forms',
+    #'crispy_bootstrap4',
     # Propias
     'gestion',
     'home',
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 MIDDLEWARE = [
