@@ -21,26 +21,39 @@ class ModeloAutoSerializer(serializers.ModelSerializer):
     """
     Serializador para el modelo ModeloAuto.
     """
+    marca = serializers.StringRelatedField()  # Mostrar el nombre de la marca como string
+
     class Meta:
         model = ModeloAuto
-        fields = ['nombre']  # Solo incluye el campo nombre, sin la relación con la marca
+        fields = ['nombre', 'marca']  # Incluimos la marca para que aparezca en el modelo
 
 class AutoSerializer(serializers.ModelSerializer):
     """
     Serializador para el modelo Auto.
-    En este serializador, se utilizan PrimaryKeyRelatedField para poder seleccionar
-    las categorías, modelos y marcas desde un listado desplegable (dropdown).
+    En este serializador, se utilizan los serializadores anidados para mostrar
+    los nombres de categoría, modelo y marca en lugar de sus IDs.
     """
-    # Utilizamos PrimaryKeyRelatedField para permitir la selección en el formulario
-    categoria = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all())
-    modelo = serializers.PrimaryKeyRelatedField(queryset=ModeloAuto.objects.all())
-    marca = serializers.PrimaryKeyRelatedField(queryset=Marca.objects.all())
+    categoria = CategorySerializer(read_only=True)  # Mostrar el nombre de la categoría
+    modelo = ModeloAutoSerializer(read_only=True)   # Mostrar los detalles del modelo
+    marca = MarcaSerializer(read_only=True)         # Mostrar el nombre de la marca
     
-    description = serializers.SerializerMethodField()  # Campo personalizado para la descripción
+    # Campos write_only para aceptar nombres (strings) al crear o actualizar
+    categoria_nombre = serializers.SlugRelatedField(
+        queryset=Categoria.objects.all(), slug_field='nombre', write_only=True, label="Categoria"
+    )
+    modelo_nombre = serializers.SlugRelatedField(
+        queryset=ModeloAuto.objects.all(), slug_field='nombre', write_only=True, label="Modelo"
+    )
+    marca_nombre = serializers.SlugRelatedField(
+        queryset=Marca.objects.all(), slug_field='nombre', write_only=True, label="Marca"
+    )
 
     class Meta:
         model = Auto
-        fields = ['id', 'categoria', 'modelo', 'marca', 'precio', 'imagen', 'descripcion', 'description']
+        fields = [
+            'id', 'categoria', 'categoria_nombre', 'modelo', 'modelo_nombre',
+            'marca', 'marca_nombre', 'precio', 'imagen', 'descripcion'
+        ]
 
     def get_description(self, obj):
         """
@@ -53,17 +66,26 @@ class AutoSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """
         Crea una nueva instancia de Auto.
-        No necesitamos crear manualmente las relaciones aquí, ya que usamos PrimaryKeyRelatedField.
         """
-        return Auto.objects.create(**validated_data)
+        categoria = validated_data.pop('categoria_nombre')
+        modelo = validated_data.pop('modelo_nombre')
+        marca = validated_data.pop('marca_nombre')
+
+        auto = Auto.objects.create(
+            categoria=categoria,
+            modelo=modelo,
+            marca=marca,
+            **validated_data
+        )
+        return auto
 
     def update(self, instance, validated_data):
         """
         Actualiza una instancia de Auto existente.
         """
-        instance.categoria = validated_data.get('categoria', instance.categoria)
-        instance.modelo = validated_data.get('modelo', instance.modelo)
-        instance.marca = validated_data.get('marca', instance.marca)
+        instance.categoria = validated_data.get('categoria_nombre', instance.categoria)
+        instance.modelo = validated_data.get('modelo_nombre', instance.modelo)
+        instance.marca = validated_data.get('marca_nombre', instance.marca)
         instance.precio = validated_data.get('precio', instance.precio)
         instance.imagen = validated_data.get('imagen', instance.imagen)
         instance.descripcion = validated_data.get('descripcion', instance.descripcion)
