@@ -1,4 +1,7 @@
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from django.http import HttpResponse
+import csv
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny
@@ -20,7 +23,6 @@ class AutoViewSet(ModelViewSet):
     serializer_class = AutoSerializer
     permission_classes = [AllowAny]  # Permitir momentáneamente acceso a todos los usuarios
     pagination_class = AutoPagination
-
     # Habilitar el filtrado
     filter_backends = [DjangoFilterBackend]  # Activar DjangoFilterBackend para filtrar
     filterset_class = AutoFilter  # Asignar la clase de filtro que creamos
@@ -45,6 +47,40 @@ class AutoViewSet(ModelViewSet):
         Método auxiliar que realiza la eliminación de la instancia.
         """
         instance.delete()
+
+
+
+
+    @action(methods=['get'], detail=False, url_path='download-csv')
+    def download_csv(self, request):
+        """
+        Exportar los datos de los autos a un archivo CSV.
+        """
+        # Definir el tipo de respuesta y el nombre del archivo
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="autos.csv"'
+
+        # Crear el escritor CSV
+        writer = csv.writer(response)
+        writer.writerow(["Modelo", "Descripción", "Precio", "Categoría", "Imagen"])
+
+        # Filtrar por categoría si se pasa como parámetro
+        categoria = request.query_params.get('categoria', None)
+        autos = self.get_queryset()
+        if categoria:
+            autos = autos.filter(categoria__nombre__icontains=categoria)
+
+        # Escribir las filas en el archivo CSV
+        for auto in autos:
+            writer.writerow([
+                f"{auto.modelo.marca.nombre} {auto.modelo.nombre}",
+                auto.descripcion or "Sin descripción",
+                auto.precio,
+                auto.categoria.nombre if auto.categoria else "No posee",
+                auto.imagen.url if auto.imagen else "No tiene imagen"
+            ])
+        
+        return response
 
 
 

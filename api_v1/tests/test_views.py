@@ -22,7 +22,7 @@ def test_list_autos(client: APIClient):
     url = reverse('autos-list')  # La ruta debe coincidir con tu proyecto
     response = client.get(path=url)
 
-    # Assert (Afirmación)
+    # Assert (Afirmacion)
     expected_result = {
         'count': 2,
         'next': None,
