@@ -16,7 +16,7 @@ class AutoPagination(PageNumberPagination):
     page_size = 10  # Número de autos por página
 
 class AutoViewSet(ModelViewSet):
-    queryset = Auto.objects.all()
+    queryset = Auto.objects.all().order_by('id')
     serializer_class = AutoSerializer
     permission_classes = [AllowAny]  # Permitir momentáneamente acceso a todos los usuarios
     pagination_class = AutoPagination
