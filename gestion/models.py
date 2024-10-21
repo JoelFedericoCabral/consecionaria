@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -32,12 +33,12 @@ class Categoria(models.Model):
 
 
 class Auto(models.Model):
-    marca = models.ForeignKey(Marca, on_delete=models.CASCADE, default=1)
-    modelo = models.ForeignKey(ModeloAuto, on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    imagen = models.ImageField(upload_to='autos/', null=True, blank=True)
-    descripcion = models.TextField()
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE, default=1, verbose_name=_("marca"))
+    modelo = models.ForeignKey(ModeloAuto, on_delete=models.CASCADE, verbose_name=_("modelo"))
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name=_("categoria"))
+    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("precio"))
+    imagen = models.ImageField(upload_to='autos/', null=True, blank=True, verbose_name=_("imagen"))
+    descripcion = models.TextField(verbose_name=_("descripcion"))
 
     def __str__(self):
         return f'{self.modelo.marca} {self.modelo.nombre}'
