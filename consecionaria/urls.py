@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
-from django.views.i18n import set_language
+from home.views import custom_set_language
 
 # Rutas estándar que no necesitan internacionalización
 urlpatterns = [
@@ -11,7 +11,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api_v1/', include('api_v1.urls')),
     # Ruta para permitir el cambio de idioma
-    path('set-language/', set_language, name='set_language'),
+    path('set-language/', custom_set_language, name='set_language'),
 ]
 
 # Rutas con soporte para internacionalización

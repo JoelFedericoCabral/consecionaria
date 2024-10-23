@@ -4,6 +4,10 @@ from django.views import View
 from django.views.generic import TemplateView
 from .forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.utils.translation import activate
+from django.utils import translation
+from consecionaria import settings
 
 class AuthView(View):
     """
@@ -119,3 +123,32 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
         return context
+
+
+def custom_set_language(request):
+    lang = request.POST.get('language', None)
+    if lang:
+        # Activa el idioma seleccionado
+        activate(lang)
+        translation.activate(lang)
+        
+        # Define la URL de redirección basada en el idioma seleccionado
+        if lang == 'en':
+            redirect_url = '/en/'
+        else:
+            redirect_url = '/'
+        
+        # Almacena el idioma en la sesión y configura la cookie
+        request.session[settings.LANGUAGE_COOKIE_NAME] = lang
+        response = HttpResponseRedirect(redirect_url)
+        response.set_cookie(
+            settings.LANGUAGE_COOKIE_NAME,
+            lang,
+            max_age=settings.LANGUAGE_COOKIE_AGE,
+            path=settings.LANGUAGE_COOKIE_PATH,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
+            httponly=settings.LANGUAGE_COOKIE_HTTPONLY
+        )
+        print(f"Idioma activado: {lang} - Cookie establecida: {lang}")
+        return response
+    return redirect('/')

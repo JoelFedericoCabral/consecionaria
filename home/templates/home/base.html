@@ -56,11 +56,16 @@
                 <form action="{% url 'set_language' %}" method="post" class="d-inline">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
-                    <button type="submit" name="language" value="{% if LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}" class="btn btn-outline-secondary">
-                        {% if LANGUAGE_CODE == 'es' %}ENG{% else %}ESP{% endif %}
+                    <button type="submit" name="language" value="{% if request.LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}" class="btn btn-outline-secondary">
+                        {% if request.LANGUAGE_CODE == 'es' %}
+                            ENG
+                        {% else %}
+                            ESP
+                        {% endif %}
                     </button>
                 </form>
-                <!-- Mostrar el nombre de usuario y un botón de salir para usuarios autenticados -->
+                
+                                <!-- Mostrar el nombre de usuario y un botón de salir para usuarios autenticados -->
                 <span class="navbar-text ms-3">{{ authenticated_user.username }}</span>
                 <a href="{% url 'logout' %}" class="btn btn-danger ms-2">{% trans "Salir" %}</a>
             {% endif %}

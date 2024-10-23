@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-23 18:30-0300\n"
+"POT-Creation-Date: 2024-10-23 20:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1329,6 +1329,76 @@ msgstr "imagen"
 msgid "descripcion"
 msgstr "descripcion"
 
+#: home/templates/home/base.html:8
+msgid "Concesionaria de Autos"
+msgstr "Concesionaria de Autos"
+
+#: home/templates/home/base.html:36
+msgid "Inicio"
+msgstr "Inicio"
+
+#: home/templates/home/base.html:37
+msgid "Autos"
+msgstr "Autos"
+
+#: home/templates/home/base.html:38
+#, fuzzy
+#| msgid "marca"
+msgid "Marcas"
+msgstr "marca"
+
+#: home/templates/home/base.html:39
+#, fuzzy
+#| msgid "modelo"
+msgid "Modelos"
+msgstr "modelo"
+
+#: home/templates/home/base.html:40
+msgid "Comentarios"
+msgstr "Comentarios"
+
+#: home/templates/home/base.html:41
+msgid "Servicios"
+msgstr "Servicios"
+
+#: home/templates/home/base.html:42
+msgid "Citas"
+msgstr "Citas"
+
+#: home/templates/home/base.html:47
+msgid "Clientes"
+msgstr "Clientes"
+
+#: home/templates/home/base.html:48
+#, fuzzy
+#| msgid "categoria"
+msgid "Categorías"
+msgstr "categoria"
+
+#: home/templates/home/base.html:49
+msgid "Ventas"
+msgstr "Ventas"
+
+#: home/templates/home/base.html:50
+msgid "Empleados"
+msgstr "Empleados"
+
+#: home/templates/home/base.html:51
+msgid "Proveedores"
+msgstr "Proveedores"
+
+#: home/templates/home/base.html:52
+msgid "Inventarios"
+msgstr "Inventarios"
+
+#: home/templates/home/base.html:53
+msgid "Financiamientos"
+msgstr "Financiamientos"
+
+#: home/templates/home/base.html:70
+msgid "Salir"
+msgstr "Salir"
+
 #: home/templates/home/index.html:18
 msgid "Hola"
 msgstr "Hola"
@@ -1336,3 +1406,11 @@ msgstr "Hola"
 #: home/templates/home/index.html:29
 msgid "Bienvenido al Sistema de Gestión de Concesionaria de Autos"
 msgstr "Bienvenido al Sistema de Gestión de Concesionaria de Autos"
+
+#: home/templates/home/index.html:36
+msgid "Categorías Disponibles"
+msgstr "Categorias disponibles"
+
+#: home/templates/home/index.html:51
+msgid "Marcas Disponibles"
+msgstr "Marcas disponibles"
