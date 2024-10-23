@@ -18,10 +18,16 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('home.urls')), 
     path('gestion/', include('gestion.urls')),
-    prefix_default_language=False  # Esto evita que el idioma predeterminado aparezca en la URL
+    prefix_default_language=False  # Evita que el idioma predeterminado (es) aparezca en la URL
 )
 
 # Rutas para servir archivos estáticos y de medios en modo DEBUG
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Configuración para asegurar que las URLs no forcen el idioma predeterminado
+if not settings.USE_I18N:
+    urlpatterns += [
+        path('', include('home.urls')),  # Asegura que la URL raíz sin prefijo esté disponible
+    ]

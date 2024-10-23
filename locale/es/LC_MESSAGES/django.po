@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-23 19:06-0300\n"
+"POT-Creation-Date: 2024-10-23 18:30-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1329,76 +1329,6 @@ msgstr "imagen"
 msgid "descripcion"
 msgstr "descripcion"
 
-#: home/templates/home/base.html:8
-msgid "Concesionaria de Autos"
-msgstr ""
-
-#: home/templates/home/base.html:36
-msgid "Inicio"
-msgstr ""
-
-#: home/templates/home/base.html:37
-msgid "Autos"
-msgstr ""
-
-#: home/templates/home/base.html:38
-#, fuzzy
-#| msgid "marca"
-msgid "Marcas"
-msgstr "marca"
-
-#: home/templates/home/base.html:39
-#, fuzzy
-#| msgid "modelo"
-msgid "Modelos"
-msgstr "modelo"
-
-#: home/templates/home/base.html:40
-msgid "Comentarios"
-msgstr ""
-
-#: home/templates/home/base.html:41
-msgid "Servicios"
-msgstr ""
-
-#: home/templates/home/base.html:42
-msgid "Citas"
-msgstr ""
-
-#: home/templates/home/base.html:47
-msgid "Clientes"
-msgstr ""
-
-#: home/templates/home/base.html:48
-#, fuzzy
-#| msgid "categoria"
-msgid "Categorías"
-msgstr "categoria"
-
-#: home/templates/home/base.html:49
-msgid "Ventas"
-msgstr ""
-
-#: home/templates/home/base.html:50
-msgid "Empleados"
-msgstr ""
-
-#: home/templates/home/base.html:51
-msgid "Proveedores"
-msgstr ""
-
-#: home/templates/home/base.html:52
-msgid "Inventarios"
-msgstr ""
-
-#: home/templates/home/base.html:53
-msgid "Financiamientos"
-msgstr ""
-
-#: home/templates/home/base.html:65
-msgid "Salir"
-msgstr ""
-
 #: home/templates/home/index.html:18
 msgid "Hola"
 msgstr "Hola"
@@ -1406,11 +1336,3 @@ msgstr "Hola"
 #: home/templates/home/index.html:29
 msgid "Bienvenido al Sistema de Gestión de Concesionaria de Autos"
 msgstr "Bienvenido al Sistema de Gestión de Concesionaria de Autos"
-
-#: home/templates/home/index.html:36
-msgid "Categorías Disponibles"
-msgstr ""
-
-#: home/templates/home/index.html:51
-msgid "Marcas Disponibles"
-msgstr ""
