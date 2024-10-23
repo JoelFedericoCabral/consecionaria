@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-21 01:05-0300\n"
+"POT-Creation-Date: 2024-10-23 19:06-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: consecionaria/settings.py:116
-msgid "English"
-msgstr ""
-
-#: consecionaria/settings.py:117
-msgid "Español"
-msgstr ""
 
 #: env/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:434
 msgid "open('foo"
@@ -1335,3 +1327,85 @@ msgstr "image"
 #: gestion/models.py:41
 msgid "descripcion"
 msgstr "description"
+
+#: home/templates/home/base.html:8
+msgid "Concesionaria de Autos"
+msgstr "Car Dealership"
+
+#: home/templates/home/base.html:36
+msgid "Inicio"
+msgstr "Start"
+
+#: home/templates/home/base.html:37
+msgid "Autos"
+msgstr "Cars"
+
+#: home/templates/home/base.html:38
+msgid "Marcas"
+msgstr "Brands"
+
+#: home/templates/home/base.html:39
+msgid "Modelos"
+msgstr "Models"
+
+#: home/templates/home/base.html:40
+msgid "Comentarios"
+msgstr "Comments"
+
+#: home/templates/home/base.html:41
+msgid "Servicios"
+msgstr "Services"
+
+#: home/templates/home/base.html:42
+msgid "Citas"
+msgstr "Quotes"
+
+#: home/templates/home/base.html:47
+msgid "Clientes"
+msgstr "Customers"
+
+#: home/templates/home/base.html:48
+#, fuzzy
+#| msgid "categoria"
+msgid "Categorías"
+msgstr "category"
+
+#: home/templates/home/base.html:49
+msgid "Ventas"
+msgstr "Sales"
+
+#: home/templates/home/base.html:50
+msgid "Empleados"
+msgstr "Employees"
+
+#: home/templates/home/base.html:51
+msgid "Proveedores"
+msgstr "Suppliers"
+
+#: home/templates/home/base.html:52
+msgid "Inventarios"
+msgstr "Inventories"
+
+#: home/templates/home/base.html:53
+msgid "Financiamientos"
+msgstr "Financing"
+
+#: home/templates/home/base.html:65
+msgid "Salir"
+msgstr "Go Out"
+
+#: home/templates/home/index.html:18
+msgid "Hola"
+msgstr "Hello"
+
+#: home/templates/home/index.html:29
+msgid "Bienvenido al Sistema de Gestión de Concesionaria de Autos"
+msgstr "Welcome to the Car Dealership Management System"
+
+#: home/templates/home/index.html:36
+msgid "Categorías Disponibles"
+msgstr "Available Categories"
+
+#: home/templates/home/index.html:51
+msgid "Marcas Disponibles"
+msgstr "Available Brands"

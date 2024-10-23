@@ -1,6 +1,8 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
+{% load i18n %}
+
 <!-- Definimos una fila con un margen superior de 2cm -->
 <div class="row" style="margin-top: 2cm;">
     <!-- Columna vacía para centrar el contenido -->
@@ -13,7 +15,7 @@
             <img class="card-img-top" src="" alt="">
             <div class="card-body">
                 <h4 class="card-title">
-                    Hola
+                    {% trans "Hola" %}
                     <!-- Verificamos si hay un usuario autenticado -->
                     {% if authenticated_user %}
                         <!-- Mostramos el nombre del usuario autenticado -->
@@ -24,14 +26,14 @@
                     {% endif %}
                 </h4>
                 <br>
-                <p class="card-text">Bienvenido al Sistema de Gestión de Concesionaria de Autos</p>
+                <p class="card-text">{% trans "Bienvenido al Sistema de Gestión de Concesionaria de Autos" %}</p>
             </div>
         </div>
         <!-- Sección de Categorías -->
         <div class="card mt-4">
             <div class="card-body">
                 <!-- Título de la sección de categorías -->
-                <h5 class="card-title text-center" style="margin-bottom: 10px;">Categorías Disponibles</h5>
+                <h5 class="card-title text-center" style="margin-bottom: 10px;">{% trans "Categorías Disponibles" %}</h5>
                 <!-- Lista de categorías centradas y dispuestas en una sola línea -->
                 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                     {% for category in all_categories %}
@@ -46,7 +48,7 @@
         <div class="card mt-4">
             <div class="card-body">
                 <!-- Título de la sección de marcas -->
-                <h5 class="card-title text-center" style="margin-bottom: 10px;">Marcas Disponibles</h5>
+                <h5 class="card-title text-center" style="margin-bottom: 10px;">{% trans "Marcas Disponibles" %}</h5>
                 <!-- Lista de marcas centradas y dispuestas en una sola línea -->
                 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                     {% for brand in all_brands %}
