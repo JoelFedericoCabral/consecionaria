@@ -56,7 +56,7 @@
                 <form action="{% url 'set_language' %}" method="post" class="d-inline">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
-                    <button type="submit" name="language" value="{% if request.LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}" class="btn btn-outline-secondary">
+                    <button type="submit" name="language" value="{% if request.LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}" class="btn btn-outline-primary">
                         {% if request.LANGUAGE_CODE == 'es' %}
                             ENG
                         {% else %}
