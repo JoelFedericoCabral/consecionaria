@@ -94,11 +94,8 @@ class ComentarioViewSet(ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class = ComentarioSerializer
 
-    @action(detail=True, methods=['get'])
+    @action(detail=True, methods=['get'], url_path='comentarios')
     def listar_comentarios_por_auto(self, request, pk=None):
-        """
-        Endpoint personalizado para obtener comentarios de un auto específico.
-        """
         comentarios = Comentario.objects.filter(auto_id=pk)
         serializer = self.get_serializer(comentarios, many=True)
         return Response(serializer.data)
