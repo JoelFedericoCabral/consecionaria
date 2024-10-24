@@ -2,14 +2,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.http import HttpResponse
 import csv
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend 
-from gestion.models import Auto
-from api_v1.serializers.auto_serializer import AutoSerializer
+from gestion.models import Auto, Marca
+from api_v1.serializers.auto_serializer import AutoSerializer, MarcaSerializer
 from api_v1.filters import AutoFilter 
 
 class AutoPagination(PageNumberPagination):
@@ -86,8 +86,9 @@ class AutoViewSet(ModelViewSet):
 
 
         
-
-
+class MarcaViewSet(viewsets.ModelViewSet):
+    queryset = Marca.objects.all()
+    serializer_class = MarcaSerializer
 
 
 
