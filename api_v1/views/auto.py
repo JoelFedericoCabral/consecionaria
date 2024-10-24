@@ -4,12 +4,12 @@ from django.http import HttpResponse
 import csv
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend 
-from gestion.models import Auto, Marca, Comentario
-from api_v1.serializers.auto_serializer import AutoSerializer, ComentarioSerializer, MarcaSerializer
+from gestion.models import Auto, Marca, Comentario, Cliente
+from api_v1.serializers.auto_serializer import AutoSerializer, ComentarioSerializer, MarcaSerializer, ClienteSerializer
 from api_v1.filters import AutoFilter 
 
 
@@ -99,3 +99,18 @@ class ComentarioViewSet(ModelViewSet):
         comentarios = Comentario.objects.filter(auto_id=pk)
         serializer = self.get_serializer(comentarios, many=True)
         return Response(serializer.data)
+
+
+class ClienteViewSet(ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+    permission_classes = [IsAdminUser]
+
+    def create(self, request, *args, **kwargs):
+        """
+        Permitir la creación de clientes solo a usuarios con permisos de staff.
+        """
+        if not request.user.is_staff:
+            return Response({"detail": "No tienes permiso para realizar esta acción."},
+                            status=status.HTTP_403_FORBIDDEN)
+        return super().create(request, *args, **kwargs)
