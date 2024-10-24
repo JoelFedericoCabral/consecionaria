@@ -2,13 +2,13 @@
 Este proyecto es un sistema de gestión para una concesionaria de autos, desarrollado con Django. Permite la gestión de autos, ventas, clientes, empleados, servicios y más. Además, ahora incluye una API REST que permite interactuar con el sistema de manera programática.
 
 ## Tabla de Contenidos
-Instalación
-Uso
-API REST
-Usuarios de Prueba
-Características
-Contacto
-Mejoras
+- Instalación
+- Uso
+- API REST
+- Usuarios de Prueba
+- Características
+- Contacto
+- Mejoras
 
 ## Instalación
 ### Requisitos Previos
