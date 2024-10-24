@@ -73,8 +73,9 @@ Este proyecto ahora incluye una API REST que permite realizar operaciones de ges
 Documentación de la API
 Para una descripción detallada de los endpoints, incluyendo los parámetros requeridos y las respuestas posibles, se ha implementado documentación automática utilizando Swagger y ReDoc. Puedes acceder a la documentación en los siguientes enlaces:
 
-Swagger UI: http://127.0.0.1:8000/swagger/
-ReDoc: http://127.0.0.1:8000/redoc/
+- Swagger UI: http://127.0.0.1:8000/swagger/
+- ReDoc: http://127.0.0.1:8000/redoc/
+
 Estas interfaces te permiten explorar la API, ver ejemplos de solicitudes y respuestas, y probar los endpoints directamente desde tu navegador.
 
 
@@ -96,18 +97,18 @@ Este usuario tiene permisos limitados y puede interactuar con funcionalidades b�
 
 
 ## Características
-Gestión de Autos: Crear, actualizar, eliminar y visualizar autos.
-Gestión de Clientes: Registro y administración de clientes.
-Gestión de Ventas: Proceso de ventas de autos.
-Gestión de Empleados: Administración del personal.
-Gestión de Proveedores: Control de proveedores de autos.
-Gestión de Servicios: Servicios adicionales ofrecidos por la concesionaria.
-Citas: Programación de citas para servicios.
-Financiamiento: Opciones de financiamiento para clientes.
-Autenticación y Autorización: Sistema de login y registro con permisos basados en roles.
-API REST: Interfaz para gestionar los modelos de la concesionaria de manera programática.
-Documentación de API: Implementada usando Swagger y ReDoc para facilitar la integración y desarrollo con la API.
-Internacionalización: Soporte multilingüe en la interfaz, con opciones de cambio de idioma.
+- Gestión de Autos: Crear, actualizar, eliminar y visualizar autos.
+- Gestión de Clientes: Registro y administración de clientes.
+- Gestión de Ventas: Proceso de ventas de autos.
+- Gestión de Empleados: Administración del personal.
+- Gestión de Proveedores: Control de proveedores de autos.
+- Gestión de Servicios: Servicios adicionales ofrecidos por la concesionaria.
+- Citas: Programación de citas para servicios.
+- Financiamiento: Opciones de financiamiento para clientes.
+- Autenticación y Autorización: Sistema de login y registro con permisos basados en roles.
+- API REST: Interfaz para gestionar los modelos de la concesionaria de manera programática.
+- Documentación de API: Implementada usando Swagger y ReDoc para facilitar la integración y desarrollo con la API.
+- Internacionalización: Soporte multilingüe en la interfaz, con opciones de cambio de idioma.
 
 
 ## Contacto
