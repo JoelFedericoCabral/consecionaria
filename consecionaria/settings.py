@@ -132,7 +132,7 @@ LOCALE_PATHS = (
 
 # Configuración correcta para la cookie de idioma
 LANGUAGE_COOKIE_NAME = 'django_language'
-LANGUAGE_COOKIE_PATH = '/'  # Asegúrate de que sea accesible en todas las rutas
+LANGUAGE_COOKIE_PATH = '/'  # Para que sea accesible en todas las rutas
 LANGUAGE_COOKIE_SECURE = False  # Cambia esto a True si usas HTTPS en producción
 LANGUAGE_COOKIE_HTTPONLY = False
 LANGUAGE_COOKIE_AGE = 3600 * 24 * 7  # Mantener la cookie por una semana
