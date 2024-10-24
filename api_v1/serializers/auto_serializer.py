@@ -3,40 +3,26 @@ from gestion.models import Auto, Categoria, Cliente, Marca, Comentario, ModeloAu
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    """
-    Serializador para el modelo Categoria.
-    """
     class Meta:
         model = Categoria
         fields = '__all__'
 
 class MarcaSerializer(serializers.ModelSerializer):
-    """
-    Serializador para el modelo Marca.
-    """
     class Meta:
         model = Marca
         fields = '__all__'
 
 class ModeloAutoSerializer(serializers.ModelSerializer):
-    """
-    Serializador para el modelo ModeloAuto.
-    """
-    marca = serializers.StringRelatedField()  # Mostrar el nombre de la marca como string
+    marca = serializers.StringRelatedField()
 
     class Meta:
         model = ModeloAuto
         fields = ['nombre', 'marca']  # Incluimos la marca para que aparezca en el modelo
 
 class AutoSerializer(serializers.ModelSerializer):
-    """
-    Serializador para el modelo Auto.
-    En este serializador, se utilizan los serializadores anidados para mostrar
-    los nombres de categoría, modelo y marca en lugar de sus IDs.
-    """
-    categoria = CategorySerializer(read_only=True)  # Mostrar el nombre de la categoría
-    modelo = ModeloAutoSerializer(read_only=True)   # Mostrar los detalles del modelo
-    marca = MarcaSerializer(read_only=True)         # Mostrar el nombre de la marca
+    categoria = CategorySerializer(read_only=True)  
+    modelo = ModeloAutoSerializer(read_only=True)   
+    marca = MarcaSerializer(read_only=True)        
     
     # Campos write_only para aceptar nombres (strings) al crear o actualizar
     categoria_nombre = serializers.SlugRelatedField(
