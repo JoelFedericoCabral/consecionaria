@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django_filters',
     # De terceros
     'rest_framework',
+    'drf_spectacular',
     # COMENTAMOS LAS SIGUIENTES LINEAS DE CRISPY SOLO PARA QUE NO INTERFIERA CON LA INTERFAZ DE DRF
     'crispy_forms',
     'crispy_bootstrap4',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'consecionaria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'gestion/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -178,6 +179,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',  # Configuración para drf-spectacular
 }
 
 DJANGO_FILTERS_CONFIG = {

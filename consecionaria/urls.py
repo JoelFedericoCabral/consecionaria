@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from home.views import custom_set_language
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
 # Rutas estándar que no necesitan internacionalización
 urlpatterns = [
@@ -12,6 +13,11 @@ urlpatterns = [
     path('api_v1/', include('api_v1.urls')),
     # Ruta para permitir el cambio de idioma
     path('set-language/', custom_set_language, name='set_language'),
+
+    # Rutas para la documentación de la API usando drf-spectacular
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 # Rutas con soporte para internacionalización
