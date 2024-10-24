@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from gestion.models import Auto, Categoria, Marca, ModeloAuto
 
+
 class CategorySerializer(serializers.ModelSerializer):
     """
     Serializador para el modelo Categoria.
@@ -92,3 +93,4 @@ class AutoSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+

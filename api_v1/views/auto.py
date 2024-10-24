@@ -82,13 +82,11 @@ class AutoViewSet(ModelViewSet):
         
         return response
 
-
-
-
-        
 class MarcaViewSet(viewsets.ModelViewSet):
     queryset = Marca.objects.all()
     serializer_class = MarcaSerializer
+
+
 
 
 
