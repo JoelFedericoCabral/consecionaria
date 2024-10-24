@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gestion.models import Auto, Categoria, Marca, ModeloAuto
+from gestion.models import Auto, Categoria, Marca, Comentario, ModeloAuto
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -94,3 +94,7 @@ class AutoSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class ComentarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comentario
+        fields = ['id', 'auto', 'autor', 'comentario', 'fecha']
